@@ -2,6 +2,18 @@ import numpy as np
 
 import pandas as pd
 
+def counter(data):
+  result = {}
+
+  for i in data:
+    for t in i.split(" "):
+      if t in result.keys():
+        result[t] += 1
+      else:
+        result[t] = 1
+
+  return result
+
 def filmer(data):
 
     title = []
@@ -15,8 +27,8 @@ def filmer(data):
             title.append(split[0])
             tahun.append(np.nan)
         else:
-            title.append(" ".join(split[:final]))
-            tahun.append(split[final:][0][1:5])
+            title.append(" ".join(split[:-1]))
+            tahun.append(split[-1:][0][1:5])
 
     for i, t in replacer.items():
         data["Genre"] = data["Genre"].str.replace(i, t)
@@ -27,9 +39,3 @@ def filmer(data):
     data = data.fillna("2016")
 
     return data
-
-def ind_titler(i):
-    return film_df.iloc[i, 1]
-
-def title_ind(t):
-    return film_df[film_df["Title"] == t].index[0]
