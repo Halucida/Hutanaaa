@@ -2,6 +2,18 @@ import numpy as np
 
 import pandas as pd
 
+def counter(data):
+    result = {}
+
+    for i in data:
+        for t in i.split(" "):
+            if t in result.keys():
+                result[t] += 1
+            else:
+                result[t] = 1
+
+    return result
+
 def filmer(data):
 
     title = []
