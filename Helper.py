@@ -15,8 +15,8 @@ def filmer(data):
             title.append(split[0])
             tahun.append(np.nan)
         else:
-            title.append(" ".join(split[:final]))
-            tahun.append(split[final:][0][1:5])
+            title.append(" ".join(split[:-1]))
+            tahun.append(split[-1:][0][1:5])
 
     for i, t in replacer.items():
         data["Genre"] = data["Genre"].str.replace(i, t)
