@@ -39,9 +39,3 @@ def filmer(data):
     data = data.fillna("2016")
 
     return data
-
-def ind_titler(i):
-    return film_df.iloc[i, 1]
-
-def title_ind(t):
-    return film_df[film_df["Title"] == t].index[0]
